@@ -5,11 +5,7 @@ export function isDate(input: unknown): input is Date {
   return is<Date>(input, "Date");
 }
 
-export function compareDate(
-  input: unknown,
-  direction: InDateDirection = "==",
-  compareWith: Date | undefined = undefined
-) {
+export function compareDate(input: unknown, direction: InDateDirection = "==", compareWith: Date | undefined = undefined) {
   if (!isDate(input)) {
     return null;
   }

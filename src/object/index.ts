@@ -22,7 +22,7 @@ export function isObject<T = Record<any, any>>(input: unknown): input is T {
   );
 }
 
-export function obj<T = Record<any, any>>(input: unknown, opts: ObjOptions<T> = undefined): T {
+export function obj<T = Record<string, unknown>>(input: unknown, opts: ObjOptions<T> = undefined): T {
   if (isObject(input)) {
     return input as T;
   }
@@ -32,7 +32,7 @@ export function obj<T = Record<any, any>>(input: unknown, opts: ObjOptions<T> = 
 
     Array.from(input.entries()).forEach((e) => {
       if (e.length === 2) {
-        output[e[0]] = e[1];
+        output[e[0] as string] = e[1];
       }
     });
 
