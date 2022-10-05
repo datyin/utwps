@@ -5,13 +5,14 @@ import { isDate, compareDate, isDateSameDay, isDateInTheFuture, isDateInThePast,
 import { removeSymbols } from "./format";
 import { isFunction, isAsyncFunction, isSyncFunction } from "./function";
 import { toJSON, fromJSON } from "./json";
-import { isMap, isWeakMap } from "./map";
 import { num, isInifnity, isNegativeInfinity, isNegativeNumber, isNumber, isPositiveInfinity, isPositiveNumber } from "./number";
 import { obj, isObject } from "./object";
 import { isPromise } from "./promise";
 import { isRegExp } from "./regex";
-import { isSet, isWeakSet } from "./set";
+import { map, isMap, isWeakMap } from "./map";
+import { set, isSet, isWeakSet } from "./set";
 import { str, isEmptyString, isNotEmptyString, isString } from "./string";
+import { isNodeJS } from "./platform";
 
 export {
   arr,
@@ -39,6 +40,7 @@ export {
   isOneOf,
   toJSON,
   fromJSON,
+  map,
   isMap,
   isWeakMap,
   num,
@@ -52,10 +54,12 @@ export {
   isObject,
   isPromise,
   isRegExp,
+  set,
   isSet,
   isWeakSet,
   str,
   isEmptyString,
   isNotEmptyString,
-  isString
+  isString,
+  isNodeJS
 };

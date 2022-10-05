@@ -19,6 +19,9 @@ export function removeSymbols(input: string, keepDotAndComma: boolean = true): s
   return value.replace(/\s+/g, " ").trim();
 }
 
+/**
+ * Support: https://caniuse.com/mdn-javascript_builtins_string_padend
+ */
 export function toFixed(input: unknown, decimals: number = 2): string {
   const inp = num(input).toString().split(".");
   const dec = num(decimals, { min: 0, default: 2 });
