@@ -17,5 +17,5 @@
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off"
   },
-  "ignorePatterns": ["src/**/*.test.ts", "dist/*", "vite.config.ts"]
+  "ignorePatterns": ["src/**/*.test.ts", "dist/*", "typings/*", "vite.config.ts"]
 }

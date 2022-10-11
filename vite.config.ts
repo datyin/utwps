@@ -9,21 +9,21 @@ export default defineConfig(({ mode }) => {
   return {
     appType: "custom",
     build: {
-      ssr: true,
-      target: "node16.17.0",
       minify: mode === "development" ? false : "esbuild",
       watch: mode === "development" ? {} : null,
       polyfillModulePreload: false,
       reportCompressedSize: false,
+      lib: {
+        entry: resolve(__dirname, "src/index.ts"),
+        fileName: "index",
+        formats: ["cjs", "es"]
+      },
       rollupOptions: {
-        input: {
-          index: resolve(__dirname, "src/index.ts")
-        },
-        output: {
-          strict: false,
-          generatedCode: "es2015"
-        },
-        external: [...builtinModules.flatMap((m) => [m, `node:${m}`]), ...Object.keys(pkg?.dependencies ?? {}), ...Object.keys(pkg?.devDependencies ?? {})]
+        external: [
+          ...builtinModules.flatMap((m) => [m, `node:${m}`]),
+          ...Object.keys(pkg?.dependencies ?? {}),
+          ...Object.keys(pkg?.devDependencies ?? {})
+        ]
       }
     }
   };
