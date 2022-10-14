@@ -3,7 +3,7 @@ import { isRegExp } from "../regex";
 import { isBoolean, isTrue } from "../boolean";
 import { isNegativeInfinity, isNumber, isPositiveInfinity } from "../number";
 import { isSet } from "../set";
-import { isPrimitive } from "../generic";
+import { isNil, isPrimitive } from "../generic";
 import { removeSymbols } from "../format";
 import type { StrOptions } from "./index.typings";
 
@@ -21,6 +21,10 @@ export function isNotEmptyString<T = string>(input: unknown): input is T {
 
 export function str(input: unknown, opts: StrOptions = undefined): string {
   try {
+    if (isNil(input) && isString(opts?.default)) {
+      return opts!.default;
+    }
+
     let value = "";
 
     if (isString(input)) {
@@ -61,6 +65,13 @@ export function str(input: unknown, opts: StrOptions = undefined): string {
 
       if (isTrue(opts.trim)) {
         value = value.trim();
+      }
+
+      if (isTrue(opts.lowerCase) || isTrue(opts.lc)) {
+        value = value.toLowerCase();
+      }
+      else if (isTrue(opts.upperCase) || isTrue(opts.uc)) {
+        value = value.toUpperCase();
       }
     }
 

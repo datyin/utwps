@@ -4,6 +4,10 @@ import type { StrOptions } from "../index.typings";
 
 const cases: [unknown, StrOptions, string][] = [
   [123.999, , "123.999"],
+  ["LOWERCASE", , "LOWERCASE"],
+  ["LOWERCASE", { lc: 1 }, "lowercase"],
+  ["uppercase", , "uppercase"],
+  ["uppercase", { uc: 1 }, "UPPERCASE"],
   [new Date(2022, 5, 10, 0, 0, 0, 0), , "2022-06-09T22:00:00.000Z"],
   [new RegExp("batman", "g"), , "/batman/g"],
   [/^batman$/g, , "/^batman$/g"],

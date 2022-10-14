@@ -2,7 +2,7 @@ import { is, isNil, isPrimitive, isOneOf } from "./generic";
 import { arr, isArray, isEmptyArray, isNotEmptyArray } from "./array";
 import { isBoolean, isTrue, isFalse, bool } from "./boolean";
 import { isDate, compareDate, isDateSameDay, isDateInTheFuture, isDateInThePast, isDateSameDayOrInTheFuture, isDateSameDayOrInThePast } from "./date";
-import { removeSymbols } from "./format";
+import { removeSymbols, toFixed } from "./format";
 import { isFunction, isAsyncFunction, isSyncFunction } from "./function";
 import { num, isInifnity, isNegativeInfinity, isNegativeNumber, isNumber, isPositiveInfinity, isPositiveNumber } from "./number";
 import { obj, isObject } from "./object";
@@ -30,6 +30,7 @@ export {
   isDateSameDayOrInTheFuture,
   isDateSameDayOrInThePast,
   removeSymbols,
+  toFixed,
   isFunction,
   isAsyncFunction,
   isSyncFunction,
