@@ -1,6 +1,6 @@
 {
   "name": "utwps",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Just an tree-shakeable js/ts library for getting/checking safe value of specific type",
   "type": "module",
   "scripts": {
@@ -15,7 +15,7 @@
   "types": "./typings/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/node/index.d.ts",
+      "types": "./typings/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
