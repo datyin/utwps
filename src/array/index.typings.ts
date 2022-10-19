@@ -1,5 +1,5 @@
-export interface ArrayOptions<T> {
+interface ArrayOptionsObject<T> {
   default?: T[];
 }
 
-export type ArrOptions<T = any> = ArrayOptions<T> | null | undefined;
+export type ArrayOptions<T = any> = ArrayOptionsObject<T> | null | undefined;

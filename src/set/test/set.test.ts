@@ -2,7 +2,7 @@ import { test, expect } from "vitest";
 import { set } from "../index";
 
 const cases: [unknown, Set<any>][] = [
-  [["1", "2", "3"], new Set(["1", "2", "3"])],
+  [["1", "2", "3"], new Set()],
   [new Set(["1", "2", "3"]), new Set(["1", "2", "3"])],
   [-Math.PI, new Set()],
   [Math.PI, new Set()],

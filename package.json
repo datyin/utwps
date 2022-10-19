@@ -7,13 +7,15 @@
     "test": "vitest --ui",
     "build": "vite build",
     "dev": "vite build --mode development",
-    "dts": "tsc --declaration --declarationDir ./typings"
+    "dts": "tsc --emitDeclarationOnly --declaration --declarationDir ./typings"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "typings": "./typings/index.d.ts",
+  "types": "./typings/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/node/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
@@ -33,9 +35,9 @@
     "url": "https://github.com/datyin/utwps/issues"
   },
   "devDependencies": {
-    "@types/node": "^18.8.5",
-    "@typescript-eslint/eslint-plugin": "^5.40.0",
-    "@typescript-eslint/parser": "^5.40.0",
+    "@types/node": "^18.11.2",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
     "@vitest/ui": "^0.24.3",
     "eslint": "^8.25.0",
     "eslint-config-standard-with-typescript": "^23.0.0",

@@ -2,8 +2,8 @@ import { test, expect } from "vitest";
 import { map } from "../index";
 
 const cases: [unknown, Map<any, any>][] = [
-  [["1", "2", "3"], new Map([["0", "1"], ["1", "2"], ["2", "3"]])],
-  [new Set(["1", "2", "3"]), new Map([["0", "1"], ["1", "2"], ["2", "3"]])],
+  [["1", "2", "3"], new Map()],
+  [new Set(["1", "2", "3"]), new Map()],
   [-Math.PI, new Map()],
   [Math.PI, new Map()],
   [0, new Map()],

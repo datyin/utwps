@@ -1,6 +1,4 @@
-export interface StringOptions {
-  js?: string;
-  joinSymbol?: boolean | 0 | 1;
+interface StringOptionsObject {
   lc?: boolean | 0 | 1;
   lowerCase?: boolean | 0 | 1;
   uc?: boolean | 0 | 1;
@@ -14,4 +12,4 @@ export interface StringOptions {
   default?: string;
 }
 
-export type StrOptions = StringOptions | null | undefined;
+export type StringOptions = StringOptionsObject | null | undefined;

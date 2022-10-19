@@ -1,8 +1,8 @@
-export interface NumberOptions {
+interface NumberOptionsObject {
     min?: number;
     max?: number;
-    array?: "sum" | "subtraction";
     oneOf?: number[];
     default?: number;
 }
-export declare type NumOptions = NumberOptions | null | undefined;
+export declare type NumberOptions = NumberOptionsObject | null | undefined;
+export {};

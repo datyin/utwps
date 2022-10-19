@@ -1,63 +1,62 @@
-import { is, isNil, isPrimitive, isOneOf } from "./generic";
-import { arr, isArray, isEmptyArray, isNotEmptyArray } from "./array";
+import { isArray, isEmptyArray, isNotEmptyArray, arr } from "./array";
 import { isBoolean, isTrue, isFalse, bool } from "./boolean";
-import { isDate, compareDate, isDateSameDay, isDateInTheFuture, isDateInThePast, isDateSameDayOrInTheFuture, isDateSameDayOrInThePast } from "./date";
+import { isDate } from "./date";
 import { removeSymbols, toFixed } from "./format";
-import { isFunction, isAsyncFunction, isSyncFunction } from "./function";
-import { num, isInifnity, isNegativeInfinity, isNegativeNumber, isNumber, isPositiveInfinity, isPositiveNumber } from "./number";
-import { obj, isObject } from "./object";
+import { isAsyncFunction, isSyncFunction, isFunction } from "./function";
+import { is, isNil, isPrimitive, isOneOf } from "./generic";
+import { isMap, isWeakMap, map, weakmap } from "./map";
+import { isNumber, isPositiveInfinity, isPositiveNumber, isNegativeInfinity, isNegativeNumber, numInRange, num } from "./number";
+import { isObject, obj } from "./object";
+import { isNodeJS, isBrowser, isElectron, isTauri } from "./platform";
 import { isPromise } from "./promise";
 import { isRegExp } from "./regex";
-import { map, isMap, isWeakMap } from "./map";
-import { set, isSet, isWeakSet } from "./set";
-import { str, isEmptyString, isNotEmptyString, isString } from "./string";
-import { isNodeJS } from "./platform";
+import { isSet, isWeakSet, set, weakset } from "./set";
+import { isString, isEmptyString, isNotEmptyString, str } from "./string";
 
 export {
-  arr,
   isArray,
   isEmptyArray,
   isNotEmptyArray,
+  arr,
   isBoolean,
   isTrue,
   isFalse,
   bool,
   isDate,
-  compareDate,
-  isDateSameDay,
-  isDateInTheFuture,
-  isDateInThePast,
-  isDateSameDayOrInTheFuture,
-  isDateSameDayOrInThePast,
   removeSymbols,
   toFixed,
-  isFunction,
   isAsyncFunction,
   isSyncFunction,
+  isFunction,
   is,
   isNil,
   isPrimitive,
   isOneOf,
-  map,
   isMap,
   isWeakMap,
-  num,
-  isInifnity,
-  isNegativeInfinity,
-  isNegativeNumber,
+  map,
+  weakmap,
   isNumber,
   isPositiveInfinity,
   isPositiveNumber,
-  obj,
+  isNegativeInfinity,
+  isNegativeNumber,
+  numInRange,
+  num,
   isObject,
+  obj,
+  isNodeJS,
+  isBrowser,
+  isElectron,
+  isTauri,
   isPromise,
   isRegExp,
-  set,
   isSet,
   isWeakSet,
-  str,
+  set,
+  weakset,
+  isString,
   isEmptyString,
   isNotEmptyString,
-  isString,
-  isNodeJS
+  str
 };

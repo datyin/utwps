@@ -1,6 +1,6 @@
-export interface BooleanOptions {
+interface BooleanOptionsObject {
   custom?: string[];
   default?: boolean;
 }
 
-export type BoolOptions = BooleanOptions | null | undefined;
+export type BooleanOptions = BooleanOptionsObject | null | undefined;

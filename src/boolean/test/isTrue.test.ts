@@ -6,6 +6,8 @@ const cases: [unknown, boolean][] = [
   [Math.PI, false],
   [0, false],
   [1, true],
+  ["1", false],
+  ["true", false],
   ["123", false],
   ["-123", false],
   [true, true],

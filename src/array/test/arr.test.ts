@@ -1,8 +1,8 @@
 import { test, expect } from "vitest";
 import { arr } from "../index";
-import type { ArrOptions } from "../index.typings";
+import type { ArrayOptions } from "../index.typings";
 
-const cases: [unknown, ArrOptions, any[]][] = [
+const cases: [unknown, ArrayOptions, any[]][] = [
   [-Math.PI, , []],
   [Math.PI, , []],
   [0, , []],
@@ -16,19 +16,9 @@ const cases: [unknown, ArrOptions, any[]][] = [
   [-Infinity, , []],
   [undefined, , []],
   [null, , []],
-  [
-    new Map([
-      ["one", 1],
-      ["two", 2],
-    ]),
-    ,
-    [
-      ["one", 1],
-      ["two", 2],
-    ],
-  ],
+  [new Map([["one", 1], ["two", 2]]), , []],
   [new Set(), , []],
-  [new Set([1, 2, 3]), , [1, 2, 3]],
+  [new Set([1, 2, 3]), , []],
   [new Date(), , []],
   [new Array(), , []],
   [new Object(), , []],
@@ -38,14 +28,7 @@ const cases: [unknown, ArrOptions, any[]][] = [
   [[1, 2, 3], , [1, 2, 3]],
   [[undefined, undefined, undefined], , [undefined, undefined, undefined]],
   [{}, , []],
-  [
-    { one: 1, two: 2 },
-    ,
-    [
-      ["one", 1],
-      ["two", 2],
-    ],
-  ],
+  [{ one: 1, two: 2 }, , []],
 ];
 
 test.each(cases)("arr(%s, %s) -> %s", (a, b, c) => {

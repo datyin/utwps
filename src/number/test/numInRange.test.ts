@@ -8,7 +8,7 @@ const cases: [unknown, OptionalNumber, OptionalNumber, OptionalNumber, number][]
   ["123.999", , , 100, 100],
   [123.999, , 123.998, , 123.998],
   [Infinity, , , , Number.MAX_SAFE_INTEGER],
-  [Infinity, , Infinity, , Infinity],
+  [Infinity, , Infinity, , Number.MAX_SAFE_INTEGER],
   [true, , , , 0],
   [-2, 1, 500, 5, 1],
   [, 1, 500, 5, 5],

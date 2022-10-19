@@ -26,15 +26,15 @@ export function toFixed(input: unknown, decimals: number = 2): string {
   const inp = num(input).toString().split(".");
   const dec = num(decimals, { min: 0, default: 2 });
 
-  const l = num(inp?.[0]);
-  let r = num(inp?.[1]) + "";
+  const leftValue = num(inp?.[0]);
+  let rightValue = num(inp?.[1]) + "";
 
-  if (r.length > dec) {
-    r = r.slice(0, dec);
+  if (rightValue.length > dec) {
+    rightValue = rightValue.slice(0, dec);
   }
-  else if (r.length < dec) {
-    r = r.padEnd(dec, "0");
+  else if (rightValue.length < dec) {
+    rightValue = rightValue.padEnd(dec, "0");
   }
 
-  return `${l}.${r}`;
+  return `${leftValue}.${rightValue}`;
 }

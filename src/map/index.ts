@@ -1,7 +1,5 @@
 import { is } from "../generic";
-import { isArray } from "../array";
-import { isObject } from "../object";
-import { isSet } from "../set";
+import type { MapOptions, WeakMapOptions } from "./index.typings";
 
 export function isMap<K = any, V = any>(input: unknown): input is Map<K, V> {
   return is(input, "Map");
@@ -11,22 +9,18 @@ export function isWeakMap<K extends object, V = any>(input: unknown): input is W
   return is(input, "WeakMap");
 }
 
-export function map<K = any, V = any>(input: unknown): Map<K, V> {
-  if (isMap(input)) {
+export function map<K = any, V = any>(input: unknown, opts: MapOptions<K, V> = undefined): Map<K, V> {
+  if (isMap<K, V>(input)) {
     return input;
   }
 
-  const m = new Map<K, V>();
+  return isMap(opts?.default) ? opts!.default : new Map();
+}
 
-  if (isObject(input) || isArray(input) || isSet(input)) {
-    const t = isSet(input) ? Array.from(input) : input;
-
-    Object.entries(t).forEach((i) => {
-      if (i.length === 2) {
-        m.set(i[0] as any, i[1]);
-      }
-    });
+export function weakmap<K extends object, V = any>(input: unknown, opts: WeakMapOptions<K, V> = undefined): WeakMap<K, V> {
+  if (isWeakMap<K, V>(input)) {
+    return input;
   }
 
-  return m;
+  return isWeakMap(opts?.default) ? opts!.default : new WeakMap();
 }

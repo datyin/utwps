@@ -1,8 +1,5 @@
 import { is, isNil } from "../generic";
-import { isArray } from "../array";
-import { isMap } from "../map";
-import { isSet } from "../set";
-import type { ObjOptions } from "./index.typings";
+import type { ObjectOptions } from "./index.typings";
 
 export function isObject<T = Record<any, any>>(input: unknown): input is T {
   if (isNil(input) || !is<T>(input, "Object")) {
@@ -22,22 +19,10 @@ export function isObject<T = Record<any, any>>(input: unknown): input is T {
   );
 }
 
-export function obj<T = Record<string, unknown>>(input: unknown, opts: ObjOptions<T> = undefined): T {
-  if (isObject(input)) {
+export function obj<T = Record<string, unknown>>(input: unknown, opts: ObjectOptions<T> = undefined): T {
+  if (isObject<T>(input)) {
     return input as T;
   }
 
-  if (isArray(input) || isMap(input) || isSet(input)) {
-    const output = {};
-
-    Array.from(input.entries()).forEach((e) => {
-      if (e.length === 2) {
-        output[e[0] as string] = e[1];
-      }
-    });
-
-    return output as T;
-  }
-
-  return isObject(opts?.default) ? (opts!.default as T) : ({} as T);
+  return isObject<T>(opts?.default) ? (opts!.default as T) : ({} as T);
 }

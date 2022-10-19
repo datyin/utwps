@@ -24,6 +24,7 @@ const cases: [unknown, any[], boolean][] = [
   [new String(), [], false],
   [new Function(), [], false],
   [[], [], false],
+  [["abc"], [["abc"]], true],
   [{}, [], false],
 ];
 

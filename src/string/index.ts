@@ -1,11 +1,8 @@
-import { isDate } from "../date";
-import { isRegExp } from "../regex";
 import { isBoolean, isTrue } from "../boolean";
 import { isNegativeInfinity, isNumber, isPositiveInfinity } from "../number";
-import { isSet } from "../set";
-import { isNil, isPrimitive } from "../generic";
+import { isNil } from "../generic";
 import { removeSymbols } from "../format";
-import type { StrOptions } from "./index.typings";
+import type { StringOptions } from "./index.typings";
 
 export function isString(input: unknown): input is string {
   return typeof input === "string";
@@ -19,10 +16,10 @@ export function isNotEmptyString<T = string>(input: unknown): input is T {
   return typeof input === "string" && input.trim().length > 0;
 }
 
-export function str(input: unknown, opts: StrOptions = undefined): string {
+export function str(input: unknown, opts: StringOptions = undefined): string {
   try {
-    if (isNil(input) && isString(opts?.default)) {
-      return opts!.default;
+    if (isNil(input)) {
+      return isString(opts?.default) ? opts!.default : "";
     }
 
     let value = "";
@@ -31,10 +28,7 @@ export function str(input: unknown, opts: StrOptions = undefined): string {
       value = input;
     }
     else {
-      if (isDate(input)) {
-        value = input.toISOString();
-      }
-      else if (isRegExp(input) || isBoolean(input) || isNumber(input) || input instanceof String) {
+      if (isBoolean(input) || isNumber(input) || input instanceof String || typeof input === "bigint") {
         value = input.toString();
       }
       else if (isPositiveInfinity(input)) {
@@ -42,15 +36,6 @@ export function str(input: unknown, opts: StrOptions = undefined): string {
       }
       else if (isNegativeInfinity(input)) {
         return "-∞";
-      }
-      else if (Array.isArray(input) || isSet(input)) {
-        if (isSet(input)) {
-          input = Array.from(input);
-        }
-
-        const joinSymbol = isString(opts?.joinSymbol) ? opts!.joinSymbol : isString(opts?.js) ? opts!.js : ", ";
-
-        value = (input as any[]).filter((i) => isPrimitive(i)).join(joinSymbol);
       }
     }
 
@@ -77,7 +62,7 @@ export function str(input: unknown, opts: StrOptions = undefined): string {
 
     return value;
   }
-  catch (error) {
-    return "";
+  catch (_) {
+    return isString(opts?.default) ? opts!.default : "";
   }
 }

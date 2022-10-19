@@ -1,4 +1,5 @@
-export interface ObjectOptions<T> {
+interface ObjectOptionsObject<T> {
     default?: T;
 }
-export declare type ObjOptions<T> = ObjectOptions<T> | null | undefined;
+export declare type ObjectOptions<T> = ObjectOptionsObject<T> | null | undefined;
+export {};
