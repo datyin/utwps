@@ -1,8 +1,8 @@
 import { test, expect } from "vitest";
 import { num } from "../index";
-import type { NumOptions } from "../index.typings";
+import type { NumberOptions } from "../index.typings";
 
-const cases: [unknown, NumOptions, number][] = [
+const cases: [unknown, NumberOptions, number][] = [
   [123.999, undefined, 123.999],
   [new Date(2022, 5, 10, 0, 0, 0, 0), undefined, 0],
   [" 0xff ", , 255],
@@ -10,6 +10,8 @@ const cases: [unknown, NumOptions, number][] = [
   ["123.145.678,24", , 123145678.24],
   ["123,145.24", , 123145.24],
   ["123,145,678.24", , 123145678.24],
+  ["456", { oneOf: [123, 456, 789] }, 456],
+  [Infinity, { oneOf: [Infinity, -Infinity] }, Number.MAX_SAFE_INTEGER],
   [1000, { max: 500 }, 500],
   [0, { min: 1 }, 1],
   [Number.MAX_SAFE_INTEGER + 1, , Number.MAX_SAFE_INTEGER],

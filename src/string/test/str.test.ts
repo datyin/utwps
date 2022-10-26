@@ -1,13 +1,16 @@
 import { test, expect } from "vitest";
 import { str } from "../index";
-import type { StrOptions } from "../index.typings";
+import type { StringOptions } from "../index.typings";
 
-const cases: [unknown, StrOptions, string][] = [
+const cases: [unknown, StringOptions<string>, string][] = [
   [123.999, , "123.999"],
   ["LOWERCASE", , "LOWERCASE"],
   ["LOWERCASE", { lc: 1 }, "lowercase"],
   ["uppercase", , "uppercase"],
   ["uppercase", { uc: 1 }, "UPPERCASE"],
+  ["vue", { oneOf: ["react", "vue", "angular", "svelte"] }, "vue"],
+  ["ANGULAR", { oneOf: ["react", "vue", "angular", "svelte"], oneOfCaseSensitive: true }, "react"],
+  ["REACT", { oneOf: ["react", "vue", "angular", "svelte"] }, "react"],
   [new Date(2022, 5, 10, 0, 0, 0, 0), , ""],
   [new RegExp("batman", "g"), , ""],
   [/^batman$/g, , ""],
@@ -15,8 +18,8 @@ const cases: [unknown, StrOptions, string][] = [
   [false, , "false"],
   [Math.PI, , "3.141592653589793"],
   [-Math.PI, , "-3.141592653589793"],
-  [Infinity, , "∞"],
-  [-Infinity, , "-∞"],
+  [Infinity, , ""],
+  [-Infinity, , ""],
   [[], , ""],
   [[1, 2, 3], , ""],
   [new Set([1, 2, 3]), , ""],

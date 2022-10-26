@@ -1,3 +1,4 @@
+import { getOneOf } from "../generic";
 import type { NumberOptions } from "./index.typings";
 
 export function isNumber(input: unknown): input is number {
@@ -62,7 +63,7 @@ export function numInRange(input: unknown, min: number = Number.MIN_SAFE_INTEGER
   return value;
 }
 
-export function num(input: unknown, opts: NumberOptions = undefined): number {
+export function num<T = number>(input: unknown, opts: NumberOptions<T> = undefined): T {
   let value = isNumber(opts?.default) ? opts!.default : 0;
 
   if (isNumber(input)) {
@@ -97,13 +98,19 @@ export function num(input: unknown, opts: NumberOptions = undefined): number {
     }
   }
 
-  if (opts && Array.isArray(opts.oneOf) && opts.oneOf.length > 0) {
-    if (!opts.oneOf.includes(value)) {
-      value = isNumber(opts?.default) && opts.oneOf.includes(opts!.default) ? opts?.default : opts.oneOf[0] ?? 0;
+  const list = opts?.oneOf?.filter((i) => isNumber(i)) ?? [];
+
+  if (list.length > 0) {
+    const found = getOneOf<T>(value as T, { list, default: opts?.default });
+
+    if (!isNumber(found)) {
+      throw new Error("Default value is not in the option list!");
     }
+
+    value = found;
   }
 
-  value = numInRange(value, opts?.min, opts?.max, opts?.default);
+  value = numInRange(value, opts?.min, opts?.max, opts?.default as number);
 
-  return value;
+  return value as T;
 }

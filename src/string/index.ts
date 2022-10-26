@@ -1,6 +1,5 @@
-import { isBoolean, isTrue } from "../boolean";
-import { isNegativeInfinity, isNumber, isPositiveInfinity } from "../number";
-import { isNil } from "../generic";
+import { isTrue } from "../boolean";
+import { getOneOf, isNil, isPrimitive } from "../generic";
 import { removeSymbols } from "../format";
 import type { StringOptions } from "./index.typings";
 
@@ -16,53 +15,56 @@ export function isNotEmptyString<T = string>(input: unknown): input is T {
   return typeof input === "string" && input.trim().length > 0;
 }
 
-export function str(input: unknown, opts: StringOptions = undefined): string {
-  try {
-    if (isNil(input)) {
-      return isString(opts?.default) ? opts!.default : "";
-    }
-
-    let value = "";
-
-    if (isString(input)) {
-      value = input;
-    }
-    else {
-      if (isBoolean(input) || isNumber(input) || input instanceof String || typeof input === "bigint") {
-        value = input.toString();
-      }
-      else if (isPositiveInfinity(input)) {
-        return "∞";
-      }
-      else if (isNegativeInfinity(input)) {
-        return "-∞";
-      }
-    }
-
-    if (opts) {
-      if (isTrue(opts.rs) || isTrue(opts.removeSymbols)) {
-        value = removeSymbols(value, isTrue(opts.keepDotAndComma));
-      }
-
-      if (isTrue(opts.tss) || isTrue(opts.toSingleSpace)) {
-        value = value.replace(/\s+/g, " ");
-      }
-
-      if (isTrue(opts.trim)) {
-        value = value.trim();
-      }
-
-      if (isTrue(opts.lowerCase) || isTrue(opts.lc)) {
-        value = value.toLowerCase();
-      }
-      else if (isTrue(opts.upperCase) || isTrue(opts.uc)) {
-        value = value.toUpperCase();
-      }
-    }
-
-    return value;
+export function str<T = string>(input: unknown, opts: StringOptions<T> = undefined): T | "" {
+  if (isNil(input)) {
+    return isString(opts?.default) ? opts!.default as T : "";
   }
-  catch (_) {
-    return isString(opts?.default) ? opts!.default : "";
+
+  let value: string = "";
+
+  if (isString(input)) {
+    value = input;
   }
+  else if (isPrimitive(input) || input instanceof String) {
+    value = input.toString();
+  }
+
+  if (opts) {
+    const list = opts?.oneOf?.filter((i) => isString(i)) ?? [];
+
+    if (list.length > 0) {
+      const found = getOneOf<T>(value as T, {
+        list,
+        default: opts?.default,
+        caseSensitive: opts.oneOfCaseSensitive
+      });
+
+      if (!isString(found)) {
+        throw new Error("Default value is not in the option list!");
+      }
+
+      value = found;
+    }
+
+    if (isTrue(opts.rs) || isTrue(opts.removeSymbols)) {
+      value = removeSymbols(value, isTrue(opts.keepDotAndComma));
+    }
+
+    if (isTrue(opts.tss) || isTrue(opts.toSingleSpace)) {
+      value = value.replace(/\s+/g, " ");
+    }
+
+    if (isTrue(opts.trim)) {
+      value = value.trim();
+    }
+
+    if (isTrue(opts.lowerCase) || isTrue(opts.lc)) {
+      value = value.toLowerCase();
+    }
+    else if (isTrue(opts.upperCase) || isTrue(opts.uc)) {
+      value = value.toUpperCase();
+    }
+  }
+
+  return value as T;
 }

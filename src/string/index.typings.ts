@@ -1,4 +1,4 @@
-interface StringOptionsObject {
+interface StringOptionsObject<T> {
   lc?: boolean | 0 | 1;
   lowerCase?: boolean | 0 | 1;
   uc?: boolean | 0 | 1;
@@ -9,7 +9,9 @@ interface StringOptionsObject {
   rs?: boolean | 0 | 1;
   removeSymbols?: boolean | 0 | 1;
   keepDotAndComma?: boolean | 0 | 1;
-  default?: string;
+  oneOf?: T[];
+  oneOfCaseSensitive?: boolean | 0 | 1;
+  default?: T;
 }
 
-export type StringOptions = StringOptionsObject | null | undefined;
+export type StringOptions<T> = StringOptionsObject<T> | null | undefined;

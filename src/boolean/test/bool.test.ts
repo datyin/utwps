@@ -1,8 +1,8 @@
 import { test, expect } from "vitest";
 import { bool } from "../index";
-import type { BoolOptions } from "../index.typings";
+import type { BooleanOptions } from "../index.typings";
 
-const cases: [unknown, BoolOptions, boolean][] = [
+const cases: [unknown, BooleanOptions, boolean][] = [
   [-Math.PI, , false],
   [Math.PI, , false],
   [0, , false],

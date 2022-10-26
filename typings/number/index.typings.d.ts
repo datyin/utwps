@@ -1,8 +1,8 @@
-interface NumberOptionsObject {
+interface NumberOptionsObject<T> {
     min?: number;
     max?: number;
-    oneOf?: number[];
-    default?: number;
+    oneOf?: T[];
+    default?: T;
 }
-export declare type NumberOptions = NumberOptionsObject | null | undefined;
+export declare type NumberOptions<T = number> = NumberOptionsObject<T> | null | undefined;
 export {};
