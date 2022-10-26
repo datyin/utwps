@@ -15,14 +15,13 @@ export function isNotEmptyString<T = string>(input: unknown): input is T {
   return typeof input === "string" && input.trim().length > 0;
 }
 
-export function str<T = string>(input: unknown, opts: StringOptions<T> = undefined): T | "" {
-  if (isNil(input)) {
-    return isString(opts?.default) ? opts!.default as T : "";
-  }
-
+export function str<T = string>(input: unknown, opts: StringOptions<T> = undefined): T {
   let value: string = "";
 
-  if (isString(input)) {
+  if (isNil(input)) {
+    value = isString(opts?.default) ? opts!.default : "";
+  }
+  else if (isString(input)) {
     value = input;
   }
   else if (isPrimitive(input) || input instanceof String) {
