@@ -27,7 +27,5 @@ const cases: [unknown, string | undefined][] = [
 ];
 
 test.each(cases)("jsonize(%s, 0) -> %s", (a, b) => {
-  const res = jsonize(a, 0)
-  console.log({ res, a, b });
-  expect(res).toStrictEqual(b);
+  expect(jsonize(a, 0)).toStrictEqual(b);
 });

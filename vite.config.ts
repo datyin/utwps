@@ -11,7 +11,9 @@ export default defineConfig(({ mode }) => {
     build: {
       minify: mode === "development" ? false : "esbuild",
       watch: mode === "development" ? {} : null,
-      polyfillModulePreload: false,
+      modulePreload: {
+        polyfill: false,
+      },
       reportCompressedSize: false,
       lib: {
         entry: resolve(__dirname, "src/index.ts"),

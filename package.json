@@ -1,11 +1,11 @@
 {
   "name": "utwps",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Just a 'tree-shakeable' js/ts library for getting and checking safe value of specific type",
   "type": "module",
   "scripts": {
     "test": "vitest --ui",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --emitDeclarationOnly --declaration --declarationDir ./typings && vite build",
     "dev": "vite build --mode development",
     "dts": "tsc --emitDeclarationOnly --declaration --declarationDir ./typings"
   },

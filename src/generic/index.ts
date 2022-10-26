@@ -66,7 +66,6 @@ export function getOneOf<T = unknown>(input: T, options: GetOneOfOptions<T> = un
 
   // search for main value
   for (let i = 0; i < len; i++) {
-    console.log("found", input, options!.list[i], isEqual(input, options!.list[i], options?.caseSensitive));
     if (isEqual(input, options!.list[i], options?.caseSensitive)) {
       return options!.list[i];
     }
@@ -75,7 +74,6 @@ export function getOneOf<T = unknown>(input: T, options: GetOneOfOptions<T> = un
   // search for default
   if (!isNil(options?.default)) {
     for (let i = 0; i < len; i++) {
-      console.log("isEqual", options!.default, options!.list[i], isEqual(options!.default, options!.list[i], options?.caseSensitive));
       if (isEqual(options!.default, options!.list[i], options?.caseSensitive)) {
         return options!.list[i];
       }
