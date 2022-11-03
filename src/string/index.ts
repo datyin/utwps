@@ -29,6 +29,10 @@ export function str<T = string>(input: unknown, opts: StringOptions<T> = undefin
   }
 
   if (opts) {
+    if (opts.match instanceof RegExp) {
+      value = opts.match.test(value) ? value : isString(opts?.default) ? opts!.default : "";
+    }
+
     const list = opts?.oneOf?.filter((i) => isString(i)) ?? [];
 
     if (list.length > 0) {

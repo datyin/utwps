@@ -1,5 +1,6 @@
-import { isNotEmptyArray } from "../array";
+import { isArray, isNotEmptyArray } from "../array";
 import { jsonize } from "../json";
+import { isObject } from "../object";
 import type { GetOneOfOptions } from "./index.typings";
 
 export function is<T>(input: unknown, type: string): input is T {
@@ -82,4 +83,34 @@ export function getOneOf<T = unknown>(input: T, options: GetOneOfOptions<T> = un
 
   // return first value
   return options!.list[0];
+}
+
+export function getFirstBy<T = unknown>(input: unknown, keys: any[]): T | null {
+  if (!isNotEmptyArray(keys)) {
+    return null;
+  }
+
+  const keysLen = keys.length;
+
+  if (isObject(input) || isArray(input) || input instanceof Set) {
+    if (input instanceof Set) {
+      input = Array.from(input.values());
+    }
+
+    for (let i = 0; i < keysLen; i++) {
+      const key = `${keys[i]}`;
+
+      if (key in (input as any)) {
+        return (input as any)[key] as T;
+      }
+    }
+  } else if (input instanceof Map) {
+    for (let i = 0; i < keysLen; i++) {
+      if (input.has(keys[i])) {
+        return input.get(keys[i]);
+      }
+    }
+  }
+
+  return null;
 }

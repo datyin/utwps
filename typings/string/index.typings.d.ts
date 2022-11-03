@@ -11,6 +11,7 @@ interface StringOptionsObject<T> {
     keepDotAndComma?: boolean | 0 | 1;
     oneOf?: T[];
     oneOfCaseSensitive?: boolean | 0 | 1;
+    match?: RegExp;
     default?: T;
 }
 export declare type StringOptions<T> = StringOptionsObject<T> | null | undefined;

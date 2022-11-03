@@ -11,6 +11,8 @@ const cases: [unknown, StringOptions<string>, string][] = [
   ["vue", { oneOf: ["react", "vue", "angular", "svelte"] }, "vue"],
   ["ANGULAR", { oneOf: ["react", "vue", "angular", "svelte"], oneOfCaseSensitive: true }, "react"],
   ["REACT", { oneOf: ["react", "vue", "angular", "svelte"] }, "react"],
+  ["1995-05-10", { match: /^\d{4}-\d{2}-\d{2}$/ }, "1995-05-10"],
+  ["1995-05-10", { match: /^[a-zA-Z]+$/ }, ""],
   [new Date(2022, 5, 10, 0, 0, 0, 0), , ""],
   [new RegExp("batman", "g"), , ""],
   [/^batman$/g, , ""],

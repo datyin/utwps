@@ -3,7 +3,7 @@ import { isBoolean, isTrue, isFalse, bool } from "./boolean";
 import { isDate } from "./date";
 import { removeSymbols, toFixed } from "./format";
 import { isAsyncFunction, isSyncFunction, isFunction } from "./function";
-import { is, isNil, isPrimitive, isEqual, isOneOf, getOneOf } from "./generic";
+import { is, isNil, isPrimitive, isEqual, isOneOf, getOneOf, getFirstBy } from "./generic";
 import { isMap, isWeakMap, map, weakmap } from "./map";
 import { isNumber, isPositiveInfinity, isPositiveNumber, isNegativeInfinity, isNegativeNumber, numInRange, num } from "./number";
 import { isObject, obj } from "./object";
@@ -35,6 +35,7 @@ export {
   isEqual,
   isOneOf,
   getOneOf,
+  getFirstBy,
   isMap,
   isWeakMap,
   map,
