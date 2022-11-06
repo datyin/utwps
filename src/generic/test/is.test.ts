@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { is } from "../index";
 
 const cases: [unknown, string, boolean][] = [
@@ -28,7 +28,7 @@ const cases: [unknown, string, boolean][] = [
   [new Uint8Array(2), "Uint8Array", true],
   [new Uint16Array(2), "Uint16Array", true],
   [new Uint32Array(2), "Uint32Array", true],
-  [new Buffer(2), "Uint8Array", true],
+  [Buffer.alloc(2), "Uint8Array", true],
   [Buffer.alloc(2), "Uint8Array", true],
   [new DataView(new ArrayBuffer(2)), "DataView", true],
   [new SharedArrayBuffer(1024), "SharedArrayBuffer", true],
@@ -38,13 +38,13 @@ const cases: [unknown, string, boolean][] = [
   [new ReferenceError(), "Error", true],
   [new SyntaxError(), "Error", true],
   [new URIError(), "Error", true],
-  [Symbol('foo'), "Symbol", true],
+  [Symbol("foo"), "Symbol", true],
   [new Intl.Collator("en"), "Intl.Collator", true],
-  [new Intl.DateTimeFormat('en-US'), "Intl.DateTimeFormat", true],
-  [new Intl.DisplayNames(['en'], { type: 'region' }), "Intl.DisplayNames", true],
+  [new Intl.DateTimeFormat("en-US"), "Intl.DateTimeFormat", true],
+  [new Intl.DisplayNames(["en"], { type: "region" }), "Intl.DisplayNames", true],
   // [new Intl.ListFormat('en'), "Intl.ListFormat", true],
-  [new Intl.Locale('ko'), "Intl.Locale", true],
-  [new Intl.NumberFormat('ko'), "Intl.NumberFormat", true],
+  [new Intl.Locale("ko"), "Intl.Locale", true],
+  [new Intl.NumberFormat("ko"), "Intl.NumberFormat", true],
   [new Intl.PluralRules(), "Intl.PluralRules", true],
   [new Intl.RelativeTimeFormat(), "Intl.RelativeTimeFormat", true],
   // [new Intl.Segmenter("ko"), "Intl.Segmenter", true],
@@ -56,9 +56,9 @@ const cases: [unknown, string, boolean][] = [
   [new String(), "String", true],
   [new Proxy({}, {}), "Object", true], // TODO: find the way to tell if its proxy
   [new Function(), "Function", true],
-  [new Promise((r) => r(true)), "Promise", true],
+  [new Promise((resolve) => resolve(true)), "Promise", true],
   [[], "Array", true],
-  [{}, "Object", true],
+  [{}, "Object", true]
 ];
 
 test.each(cases)("is(%s, %s) -> %s", (a, b, c) => {

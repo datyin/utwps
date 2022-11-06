@@ -12,16 +12,9 @@ export function isNil(input: unknown): input is null | undefined {
 }
 
 export function isPrimitive(input: unknown): input is string | number | boolean {
-  return (
-    typeof input === "string" ||
-    typeof input === "bigint" ||
-    typeof input === "boolean" ||
-    (
-      typeof input === "number" &&
-      !isNaN(input) &&
-      isFinite(input)
-    )
-  );
+  return (typeof input === "string" || typeof input === "bigint" || typeof input === "boolean" || (
+    typeof input === "number" && !isNaN(input) && isFinite(input)
+  ));
 }
 
 export function isEqual(input1: unknown, input2: unknown, caseSensitive: boolean | 0 | 1 = true): boolean {
@@ -85,7 +78,7 @@ export function getOneOf<T = unknown>(input: T, options: GetOneOfOptions<T> = un
   return options!.list[0];
 }
 
-export function getFirstBy<T = unknown>(input: unknown, keys: any[]): T | null {
+export function getOneOfIndex<T = unknown>(input: unknown, keys: any[]): T | null {
   if (!isNotEmptyArray(keys)) {
     return null;
   }
@@ -104,7 +97,8 @@ export function getFirstBy<T = unknown>(input: unknown, keys: any[]): T | null {
         return (input as any)[key] as T;
       }
     }
-  } else if (input instanceof Map) {
+  }
+  else if (input instanceof Map) {
     for (let i = 0; i < keysLen; i++) {
       if (input.has(keys[i])) {
         return input.get(keys[i]);

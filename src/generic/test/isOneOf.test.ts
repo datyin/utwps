@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { isOneOf } from "../index";
 
 const cases: [unknown, any[], boolean, boolean][] = [
@@ -29,7 +29,7 @@ const cases: [unknown, any[], boolean, boolean][] = [
   [new Function(), [], true, false],
   [[], [], true, false],
   [["abc"], [["abc"]], true, true],
-  [{}, [], true, false],
+  [{}, [], true, false]
 ];
 
 test.each(cases)("isOneOf(%s, %j, %s) -> %s", (a, b, c, d) => {

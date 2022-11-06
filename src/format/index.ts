@@ -13,7 +13,8 @@ export function removeSymbols(input: string, keepDotAndComma: boolean = true): s
 
     if (keepDotAndComma) {
       value = value.replace(/\s+,/g, ",").replace(/\s+\./g, ".");
-    } else {
+    }
+    else {
       value = value.replace(/\.|,/g, " ");
     }
 
@@ -32,7 +33,7 @@ export function toFixed(input: unknown, decimals: number = 2): string {
   const dec = num(decimals, { min: 0, default: 2 });
 
   const leftValue = num(inp?.[0]);
-  let rightValue = num(inp?.[1]) + "";
+  let rightValue = `${num(inp?.[1])}`;
 
   if (rightValue.length > dec) {
     rightValue = rightValue.slice(0, dec);

@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { map } from "../index";
 
 const cases: [unknown, Map<any, any>][] = [

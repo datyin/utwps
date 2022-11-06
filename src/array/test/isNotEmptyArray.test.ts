@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { isNotEmptyArray } from "../index";
 
 const cases: [unknown, boolean][] = [
@@ -25,7 +25,7 @@ const cases: [unknown, boolean][] = [
   [[], false],
   [[1, 2, 3], true],
   [[undefined, undefined, undefined], true],
-  [{}, false],
+  [{}, false]
 ];
 
 test.each(cases)("isNotEmptyArray(%s) -> %s", (a, b) => {

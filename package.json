@@ -1,28 +1,26 @@
 {
   "name": "utwps",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Just a 'tree-shakeable' js/ts library for getting and checking safe value of specific type",
   "type": "module",
   "scripts": {
     "test": "vitest --ui",
-    "build": "tsc --emitDeclarationOnly --declaration --declarationDir ./typings && vite build",
-    "dev": "vite build --mode development",
-    "dts": "tsc --emitDeclarationOnly --declaration --declarationDir ./typings"
+    "build": "tsc --noEmit --emitDeclarationOnly false && vite build && tsc",
+    "dev": "vite build --mode development"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
-  "typings": "./typings/index.d.ts",
-  "types": "./typings/index.d.ts",
+  "typings": "./dist/typings/index.d.ts",
+  "types": "./dist/typings/index.d.ts",
   "exports": {
     ".": {
-      "types": "./typings/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "types": "./dist/typings/index.d.ts",
+      "import": "./dist/dist/index.js",
+      "require": "./dist/dist/index.cjs"
     }
   },
   "files": [
-    "dist",
-    "typings"
+    "dist"
   ],
   "author": "Jove Jonovski <jovejonovski@gmail.com> (https://github.com/datyin)",
   "license": "MIT",
@@ -35,15 +33,10 @@
     "url": "https://github.com/datyin/utwps/issues"
   },
   "devDependencies": {
+    "@datyin/eslint-config-ts": "^0.0.7",
     "@types/node": "^18.11.9",
-    "@typescript-eslint/eslint-plugin": "^5.42.0",
-    "@typescript-eslint/parser": "^5.42.0",
     "@vitest/ui": "^0.24.5",
-    "eslint": "^8.26.0",
-    "eslint-config-standard-with-typescript": "^23.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.4.0",
-    "eslint-plugin-promise": "^6.1.1",
+    "eslint": "^8.27.0",
     "typescript": "^4.8.4",
     "vite": "^3.2.2",
     "vitest": "^0.24.5"

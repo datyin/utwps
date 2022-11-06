@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { isObject } from "../index";
 
 const cases: [unknown, boolean][] = [
@@ -24,7 +24,7 @@ const cases: [unknown, boolean][] = [
   [new String(), false],
   [new Function(), false],
   [[], false],
-  [{}, true],
+  [{}, true]
 ];
 
 test.each(cases)("isObject(%s) -> %s", (a, b) => {

@@ -1,18 +1,18 @@
-import { isArray, isEmptyArray, isNotEmptyArray, arr } from "./array";
-import { isBoolean, isTrue, isFalse, bool } from "./boolean";
+import { arr, isArray, isEmptyArray, isNotEmptyArray } from "./array";
+import { bool, isBoolean, isFalse, isTrue } from "./boolean";
 import { isDate } from "./date";
 import { removeSymbols, toFixed } from "./format";
-import { isAsyncFunction, isSyncFunction, isFunction } from "./function";
-import { is, isNil, isPrimitive, isEqual, isOneOf, getOneOf, getFirstBy } from "./generic";
+import { isAsyncFunction, isFunction, isSyncFunction } from "./function";
+import { getOneOf, getOneOfIndex, is, isEqual, isNil, isOneOf, isPrimitive } from "./generic";
 import { isMap, isWeakMap, map, weakmap } from "./map";
-import { isNumber, isPositiveInfinity, isPositiveNumber, isNegativeInfinity, isNegativeNumber, numInRange, num } from "./number";
+import { isNegativeInfinity, isNegativeNumber, isNumber, isPositiveInfinity, isPositiveNumber, num, numInRange } from "./number";
 import { isObject, obj } from "./object";
-import { isNodeJS, isBrowser, isElectron, isTauri } from "./platform";
+import { isBrowser, isElectron, isNodeJS, isTauri } from "./platform";
 import { isPromise } from "./promise";
 import { isRegExp } from "./regex";
 import { isSet, isWeakSet, set, weakset } from "./set";
-import { isString, isEmptyString, isNotEmptyString, str } from "./string";
-import { jsonize, dejsonize } from "./json";
+import { isEmptyString, isNotEmptyString, isString, str } from "./string";
+import { dejsonize, jsonize } from "./json";
 
 export {
   isArray,
@@ -35,7 +35,7 @@ export {
   isEqual,
   isOneOf,
   getOneOf,
-  getFirstBy,
+  getOneOfIndex,
   isMap,
   isWeakMap,
   map,

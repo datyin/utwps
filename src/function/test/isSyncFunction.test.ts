@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { isSyncFunction } from "../index";
 
 const cases: [unknown, boolean][] = [
@@ -29,14 +29,14 @@ const cases: [unknown, boolean][] = [
     () => {
       return true;
     },
-    true,
+    true
   ],
   [
     async () => {
       return true;
     },
-    false,
-  ],
+    false
+  ]
 ];
 
 test.each(cases)("isSyncFunction(%s) -> %s", (a, b) => {

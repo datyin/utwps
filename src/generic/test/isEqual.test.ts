@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { isEqual } from "../index";
 
 const cases: [unknown, unknown, boolean][] = [
@@ -8,7 +8,7 @@ const cases: [unknown, unknown, boolean][] = [
   [1, true, false],
   ["123", 123, false],
   ["-123", "-123", true],
-  [true, true, true,],
+  [true, true, true],
   [true, 1, false],
   [false, false, true],
   [NaN, null, false],
@@ -27,7 +27,7 @@ const cases: [unknown, unknown, boolean][] = [
   [new Function(), () => {}, false],
   [() => {}, () => {}, true],
   [[], new ArrayBuffer(2), false],
-  [{}, {}, true],
+  [{}, {}, true]
 ];
 
 test.each(cases)("isEqual(%s, %s) -> %s", (a, b, c) => {

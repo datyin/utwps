@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { jsonize } from "../index";
 
 const cases: [unknown, string | undefined][] = [
@@ -23,7 +23,7 @@ const cases: [unknown, string | undefined][] = [
   [new Function(), "{\"__utwps_original_type\":\"Function\",\"value\":\"function anonymous(\\n) {\\n\\n}\"}"],
   [[], "[]"],
   [["abc"], "[\"abc\"]"],
-  [{}, "{}"],
+  [{}, "{}"]
 ];
 
 test.each(cases)("jsonize(%s, 0) -> %s", (a, b) => {

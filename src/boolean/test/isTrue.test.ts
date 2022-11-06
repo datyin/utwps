@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { isTrue } from "../index";
 
 const cases: [unknown, boolean][] = [
@@ -25,7 +25,7 @@ const cases: [unknown, boolean][] = [
   [new String(), false],
   [new Function(), false],
   [[], false],
-  [{}, false],
+  [{}, false]
 ];
 
 test.each(cases)("isTrue(%s) -> %s", (a, b) => {

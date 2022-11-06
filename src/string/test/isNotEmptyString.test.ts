@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { isNotEmptyString } from "../index";
 
 const cases: [unknown, boolean][] = [
@@ -28,7 +28,7 @@ const cases: [unknown, boolean][] = [
   [new String(), false],
   [new Function(), false],
   [[], false],
-  [{}, false],
+  [{}, false]
 ];
 
 test.each(cases)("isNotEmptyString(%s) -> %s", (a, b) => {

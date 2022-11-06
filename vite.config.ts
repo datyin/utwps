@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       minify: mode === "development" ? false : "esbuild",
       watch: mode === "development" ? {} : null,
       modulePreload: {
-        polyfill: false,
+        polyfill: false
       },
       reportCompressedSize: false,
       lib: {

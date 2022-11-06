@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { set } from "../index";
 
 const cases: [unknown, Set<any>][] = [

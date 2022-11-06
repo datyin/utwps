@@ -27,7 +27,6 @@ export function str<T = string>(input: unknown, opts: StringOptions<T> = undefin
   else if (isPrimitive(input) || input instanceof String) {
     value = input.toString();
   }
-
   if (opts) {
     if (opts.match instanceof RegExp) {
       value = opts.match.test(value) ? value : isString(opts?.default) ? opts!.default : "";
