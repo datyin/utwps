@@ -1,6 +1,6 @@
 {
   "name": "utwps",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Just a 'tree-shakeable' js/ts library for getting and checking safe value of specific type",
   "type": "module",
   "scripts": {
@@ -8,15 +8,15 @@
     "build": "tsc --noEmit --emitDeclarationOnly false && vite build && tsc",
     "dev": "vite build --mode development"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "typings": "./dist/typings/index.d.ts",
-  "types": "./dist/typings/index.d.ts",
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "typings": "./typings/index.d.ts",
+  "types": "./typings/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/typings/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "types": "./typings/index.d.ts",
+      "import": "./index.js",
+      "require": "./index.cjs"
     }
   },
   "files": [
@@ -35,11 +35,11 @@
   "devDependencies": {
     "@datyin/eslint-config-ts": "^0.0.7",
     "@types/node": "^18.11.9",
-    "@vitest/ui": "^0.24.5",
+    "@vitest/ui": "^0.25.0",
     "eslint": "^8.27.0",
     "typescript": "^4.8.4",
-    "vite": "^3.2.2",
-    "vitest": "^0.24.5"
+    "vite": "^3.2.3",
+    "vitest": "^0.25.0"
   },
   "keywords": [
     "types",
