@@ -1,3 +1,4 @@
+import { isDate } from "../date";
 import { isAsyncFunction, isFunction } from "../function";
 import { isNegativeInfinity, isPositiveInfinity } from "../number";
 import { isObject } from "../object";
@@ -29,6 +30,9 @@ export function jsonize(input: unknown, spaces: number = 2): string {
     else if (Number.isNaN(value)) {
       return { __utwps_original_type: "NaN", value: value.toString() };
     }
+    else if (isDate(value)) {
+      return { __utwps_original_type: "Date", value: new Date(value).toISOString() };
+    }
 
     return value;
   }, spaces);
@@ -40,26 +44,29 @@ export function dejsonize<T = unknown>(input: string): JsonParseResponse<T> {
       return [undefined, "Input must be string!"];
     }
 
-    const data = JSON.parse(input, (_, value) => {
-      if (isObject(value)) {
-        if (value.__utwps_original_type === "Map") {
-          return new Map(value.value);
+    const data = JSON.parse(input, (_, entity) => {
+      if (isObject(entity)) {
+        if (entity.__utwps_original_type === "Map") {
+          return new Map(entity.value);
         }
-        else if (value.__utwps_original_type === "Set") {
-          return new Set(value.value);
+        else if (entity.__utwps_original_type === "Set") {
+          return new Set(entity.value);
         }
-        else if (value.__utwps_original_type === "-Infinity") {
+        else if (entity.__utwps_original_type === "-Infinity") {
           return -Infinity;
         }
-        else if (value.__utwps_original_type === "Infinity") {
+        else if (entity.__utwps_original_type === "Infinity") {
           return Infinity;
         }
-        else if (value.__utwps_original_type === "NaN") {
+        else if (entity.__utwps_original_type === "NaN") {
           return NaN;
+        }
+        else if (entity.__utwps_original_type === "Date") {
+          return new Date(entity.value);
         }
       }
 
-      return value;
+      return entity;
     });
 
     return [data as T, undefined];

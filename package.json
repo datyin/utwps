@@ -1,6 +1,6 @@
 {
   "name": "utwps",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Just a 'tree-shakeable' js/ts library for getting and checking safe value of specific type",
   "type": "module",
   "scripts": {
@@ -33,13 +33,13 @@
     "url": "https://github.com/datyin/utwps/issues"
   },
   "devDependencies": {
-    "@datyin/eslint-config-ts": "^0.0.7",
+    "@datyin/eslint-config-ts": "^0.0.10",
     "@types/node": "^18.11.9",
-    "@vitest/ui": "^0.25.0",
-    "eslint": "^8.27.0",
-    "typescript": "^4.8.4",
-    "vite": "^3.2.3",
-    "vitest": "^0.25.0"
+    "@vitest/ui": "^0.25.3",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4",
+    "vitest": "^0.25.3"
   },
   "keywords": [
     "types",

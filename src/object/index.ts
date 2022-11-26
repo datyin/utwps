@@ -14,8 +14,8 @@ export function isObject<T = Record<any, any>>(input: unknown): input is T {
       || prototype === Object.prototype
       || Object.getPrototypeOf(prototype) === null
     )
-    && !(Symbol.toStringTag in input)
-    && !(Symbol.iterator in input)
+    && !(Symbol.toStringTag in (input as any))
+    && !(Symbol.iterator in (input as any))
   );
 }
 
