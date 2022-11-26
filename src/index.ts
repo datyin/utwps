@@ -1,6 +1,6 @@
 import { arr, isArray, isEmptyArray, isNotEmptyArray } from "./array";
 import { bool, isBoolean, isFalse, isTrue } from "./boolean";
-import { isDate } from "./date";
+import { date, isDate } from "./date";
 import { removeSymbols, toFixed } from "./format";
 import { isAsyncFunction, isFunction, isSyncFunction } from "./function";
 import { getOneOf, getOneOfIndex, is, isEqual, isNil, isOneOf, isPrimitive } from "./generic";
@@ -24,6 +24,7 @@ export {
   isFalse,
   bool,
   isDate,
+  date,
   removeSymbols,
   toFixed,
   isAsyncFunction,

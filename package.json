@@ -1,6 +1,6 @@
 {
   "name": "utwps",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Just a 'tree-shakeable' js/ts library for getting and checking safe value of specific type",
   "type": "module",
   "scripts": {
