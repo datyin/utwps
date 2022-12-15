@@ -10,12 +10,12 @@ export function isObject<T = Record<any, any>>(input: unknown): input is T {
 
   return (
     (
-      prototype === null
-      || prototype === Object.prototype
-      || Object.getPrototypeOf(prototype) === null
-    )
-    && !(Symbol.toStringTag in (input as any))
-    && !(Symbol.iterator in (input as any))
+      prototype === null ||
+      prototype === Object.prototype ||
+      Object.getPrototypeOf(prototype) === null
+    ) &&
+    !(Symbol.toStringTag in (input as any)) &&
+    !(Symbol.iterator in (input as any))
   );
 }
 
